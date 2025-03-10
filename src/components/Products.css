@@ -1,0 +1,175 @@
+/* Container Styles */
+.section-container {
+    padding: 20px;
+  }
+  
+  /* Breadcrumb Styles */
+  .breadcrumb {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  
+  /* Header Actions */
+  .header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .actions-left,
+  .actions-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  /* Button Styles */
+  .btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+ /* Table Header */
+.table-header {
+  background-color: #0d0a1a; /* Matching sidebar color */
+  color: white;
+}
+
+/* Blue Buttons - Matching Sidebar */
+.btn-blue {
+  background-color: #0d0a1a; /* Dark purple from sidebar */
+  color: white;
+}
+
+.btn-light-blue {
+  background-color: #0d0a1a; /* Matching sidebar */
+  color: white;
+}
+
+  .btn-green {
+    background-color: #16a34a;
+    color: white;
+  }
+  
+  
+  /* Filter Input */
+  .filter-input-container {
+    position: relative;
+  }
+  
+  .filter-input {
+    padding: 8px 12px 8px 36px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+  }
+  
+  .filter-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+  }
+  
+  /* Table Styles */
+  .table-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .products-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  
+  .table-header th {
+    padding: 12px 16px;
+    text-align: left;
+  }
+  
+  .table-header th:first-child {
+    width: 32px;
+  }
+  
+  .table-header th:last-child {
+    text-align: right;
+  }
+  
+  .table-row {
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .table-row:hover {
+    background-color: #f9fafb;
+  }
+  
+  .table-row td {
+    padding: 12px 16px;
+  }
+  
+  .table-row td:last-child {
+    text-align: right;
+  }
+  
+  /* Product Name and Status Badge */
+  .product-name {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Added gap between status badge and name */
+  }
+  
+  .status-badge {
+    background-color: #0c0432;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    flex-shrink: 0; /* Prevents the badge from shrinking */
+  }
+  
+  /* Pagination Styles */
+  .pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .rows-select {
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 4px 8px;
+  }
+  
+  .pagination-text {
+    color: #6b7280;
+  }
+  
+  .pagination-buttons {
+    display: flex;
+    gap: 4px;
+  }
+  
+  .pagination-button {
+    padding: 4px 8px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+  }
+  
+  .pagination-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+
+  

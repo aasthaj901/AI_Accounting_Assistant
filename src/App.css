@@ -1,38 +1,665 @@
-.App {
-  text-align: center;
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Layout */
+.app-container {
   display: flex;
-  flex-direction: column;
+  height: 100vh;
+  background-color: #f3f4f6;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #0d0a1a; /* Adjusted to match the dark purple shade */
+  color: white;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+}
+
+.sidebar-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 1rem;
+  text-align: center;
+  color: white; /* Ensuring text remains white */
+}
+
+.sidebar-nav {
+  margin-top: 2rem;
+  color: white; /* Ensuring links or items remain white */
+}
+
+
+.nav-link {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 0.75rem 1rem;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  margin-bottom: 0.5rem;
+  border-radius: 0.375rem;
+}
+
+.nav-link:hover {
+  background-color: #374151;
+}
+
+.nav-link-icon {
+  margin-right: 0.75rem;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  margin-left: 250px;
+  overflow-y: auto;
+}
+
+.header {
+  background-color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Section Containers */
+.section-container {
+  padding: 2rem;
+}
+
+/* Table Styles */
+.table-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background-color: #f9fafb;
+  padding: 12px 24px;
+  text-align: left;
+  font-weight: 500;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table td {
+  padding: 12px 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Button Styles */
+.button-primary {
+  background-color: #08132d;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.button-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.button-icon {
+  padding: 0.25rem 0.75rem;
+  margin: 0 0.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.button-icon:hover {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-active {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-paid {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+/* Dashboard Cards */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card-blue { background-color: #3b82f6; color: white; }
+.card-green { background-color: #10b981; color: white; }
+.card-purple { background-color: #8b5cf6; color: white; }
+.card-orange { background-color: #f97316; color: white; }
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.card-value {
+  font-size: 1.875rem;
+  font-weight: bold;
+}
+
+/* Section Headers */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Add these styles to your App.css */
+
+/* Table Header Styles */
+.table thead th {
+  background-color: #100e2d;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* Status Badge */
+.status-badge {
+  background-color: #4f46e5;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Filter Input */
+.filter-input {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  padding-left: 2.5rem;
+}
+
+/* Table Hover */
+.table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Pagination Buttons */
+.pagination-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  background-color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* More Actions Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown button {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Import/New Product Buttons */
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.action-button-primary {
+  background-color: #1e1b4e;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.action-button-success {
+  background-color: #10b981;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+
+/* Dropdown menu and items */
+.dropdown-menu {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  padding: 5px 0;
+  border-radius: 5px;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+}
+
+.dropdown-item {
+  background-color: white;
+  padding: 10px;
+  text-align: left;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dropdown-item:hover {
+  background-color: #f4f4f4;
+}
+
+.dropdown-item:active {
+  background-color: #e0e0e0;
+}
+/* Add this to your TableStyles.css */
+.new-vendor-form {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.new-vendor-form input, .new-vendor-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.new-vendor-form button {
+  padding: 10px 15px;
+  margin-right: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.new-vendor-form button:hover {
+  background-color: #0056b3;
+}
+
+.new-vendor-form button:last-child {
+  background-color: #6c757d;
+}
+
+.new-vendor-form button:last-child:hover {
+  background-color: #5a6268;
+}
+
+/* Add this to your TableStyles.css */
+.new-invoice-form {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.new-invoice-form input, .new-invoice-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.new-invoice-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.new-invoice-form button {
+  padding: 10px 15px;
+  margin-right: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.new-invoice-form button:hover {
+  background-color: #0056b3;
+}
+
+.new-invoice-form button:last-child {
+  background-color: #6c757d;
+}
+
+.new-invoice-form button:last-child:hover {
+  background-color: #5a6268;
+}
+
+.new-invoice-form .form-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.new-invoice-form .form-group {
+  margin-bottom: 15px;
+}
+
+.new-invoice-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Small Screens */
+@media (max-width: 767px) {
+  /* Sidebar */
+  .sidebar {
+    width: 200px;
+    padding: 10px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .sidebar-title {
+    font-size: 1rem;
+  }
+
+  .sidebar-nav {
+    margin-top: 1rem;
+  }
+
+  /* Main Content */
+  .main-content {
+    margin-left: 200px;
+  }
+
+  .header {
+    padding: 0.75rem 1rem;
+  }
+
+  .header-title {
+    font-size: 1.25rem;
+  }
+
+  /* Table Styles */
+  .table th, .table td {
+    padding: 8px 12px;
+  }
+
+  /* Dashboard Cards */
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  /* Buttons */
+  .button-primary {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .button-icon {
+    padding: 0.25rem 0.5rem;
+  }
+
+  /* Status Badges */
+  .status-badge {
+    font-size: 0.75rem;
+  }
+
+  /* Table Layout */
+  .table {
+    font-size: 0.875rem;
+  }
+
+  .pagination-button {
+    font-size: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  .dropdown-menu {
+    width: 100%;
+    max-width: 150px;
+  }
+}
+
+/* Medium Screens */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Sidebar */
+  .sidebar {
+    width: 220px;
+    padding: 15px;
+  }
+
+  .sidebar-title {
+    font-size: 1.125rem;
+  }
+
+  .sidebar-nav {
+    margin-top: 1.5rem;
+  }
+
+  /* Main Content */
+  .main-content {
+    margin-left: 220px;
+  }
+
+  .header {
+    padding: 1rem 1.5rem;
+  }
+
+  .header-title {
+    font-size: 1.375rem;
+  }
+
+  /* Table Styles */
+  .table th, .table td {
+    padding: 10px 16px;
+  }
+
+  /* Dashboard Cards */
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  /* Buttons */
+  .button-primary {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .button-icon {
+    padding: 0.25rem 0.75rem;
+  }
+
+  /* Status Badges */
+  .status-badge {
+    font-size: 0.875rem;
+  }
+
+  .pagination-button {
+    font-size: 0.875rem;
+  }
+}
+
+/* Large Screens */
+@media (min-width: 1025px) {
+  /* Sidebar */
+  .sidebar {
+    width: 250px;
+    padding: 20px;
+  }
+
+  .sidebar-title {
+    font-size: 1.25rem;
+  }
+
+  .sidebar-nav {
+    margin-top: 2rem;
+  }
+
+  /* Main Content */
+  .main-content {
+    margin-left: 250px;
+  }
+
+  .header {
+    padding: 1rem 2rem;
+  }
+
+  .header-title {
+    font-size: 1.5rem;
+  }
+
+  /* Dashboard Cards */
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  /* Button and Status Badge Styles */
+  .button-primary {
+    font-size: 1.125rem;
+    padding: 0.5rem 1.25rem;
+  }
+
+  .button-icon {
+    padding: 0.25rem 1rem;
+  }
+
+  .status-badge {
+    font-size: 1rem;
+  }
+
+  /* Table Styles */
+  .table th, .table td {
+    padding: 12px 24px;
+  }
+
+  .pagination-button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .dropdown-menu {
+    width: 200px;
+  }
+}
+
+/* Mobile View for Table (Single column) */
+@media (max-width: 480px) {
+  .table th, .table td {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+
+  .table thead th {
+    font-size: 0.75rem;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .pagination-container {
+    text-align: center;
+  }
+}
+
+/* Navbar */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .header {
+    padding: 0.75rem;
   }
 }
